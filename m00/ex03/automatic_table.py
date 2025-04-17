@@ -6,7 +6,7 @@
 #    By: xmatute- <xmatute-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/17 11:05:42 by xmatute-          #+#    #+#              #
-#    Updated: 2025/04/17 11:24:48 by xmatute-         ###   ########.fr        #
+#    Updated: 2025/04/17 12:28:01 by xmatute-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,7 @@ except psycopg.Error as e:
         sys.exit(1)
 
 collumns = [
-    "event_time TIMESTAMP NOT NULL",
+    "event_time TIMESTAMPTZ NOT NULL",
     "event_type event_type_enum NOT NULL",
     "product_id INTEGER NOT NULL",
     "price MONEY NOT NULL",
