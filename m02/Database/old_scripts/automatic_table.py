@@ -6,7 +6,7 @@
 #    By: xmatute- <xmatute-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/17 11:05:42 by xmatute-          #+#    #+#              #
-#    Updated: 2025/04/17 12:28:01 by xmatute-         ###   ########.fr        #
+#    Updated: 2025/04/20 21:18:32 by xmatute-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -103,8 +103,9 @@ def create_customer_table(csv_path):
                 print(len(header), len(collumns))
                 print(collumns)
                 raise ValueError("CSV header does not match expected columns.")
-            table_name = csv_path.split('/')[-1][:-4]
-            create_table(table_name, collumns)
+        table_name = csv_path.split('/')[-1][:-4]
+        create_table(table_name, collumns)
+        with open(csv_path, 'r') as csv_file:
             populate_table(table_name, csv_file)
     except FileNotFoundError:
         print(f"File {csv_path} not found.")
