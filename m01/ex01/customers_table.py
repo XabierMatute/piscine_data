@@ -6,7 +6,7 @@
 #    By: xmatute- <xmatute-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/17 12:14:14 by xmatute-          #+#    #+#              #
-#    Updated: 2025/04/17 12:28:44 by xmatute-         ###   ########.fr        #
+#    Updated: 2025/04/17 13:19:51 by xmatute-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,13 +54,37 @@ def create_table(table_name, columns):
         conn.rollback()
         raise Exception(f"Error creating table: {e}")
 
+def get_customers_tables():
+    sql = "SELECT table_name FROM information_schema.tables WHERE table_schema = 'public' AND table_name ~ '^data_202._...$';"
+    try:
+        with conn.cursor() as cur:
+            cur.execute(sql)
+            tables = cur.fetchall()
+            print(f"Tables in the database: {tables}")
+            return tables
+    except psycopg.Error as e:
+        print(f"Error fetching tables: {e}")
+        raise Exception(f"Error fetching tables: {e}")
+
 def populate_customers_table():
-    pass #TODO
+    customers_tables = get_customers_tables()
+    print(customers_tables)
+    for table in customers_tables:
+        table_name = table[0]
+        sql = f"INSERT INTO customers SELECT * FROM {table_name};"
+        print(sql)
+        try:
+            with conn.cursor() as cur:
+                cur.execute(sql)
+                print(f"Data from {table_name} inserted into customers.")
+                conn.commit()
+        except psycopg.Error as e:
+            print(f"Error inserting data from {table_name}: {e}")
+            conn.rollback()
 
 def create_customers_table():
     create_table("customers", collumns)
     populate_customers_table()
-    
 
 def main():
     try:

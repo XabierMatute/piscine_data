@@ -6,7 +6,7 @@
 #    By: xmatute- <xmatute-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/14 11:13:09 by xmatute-          #+#    #+#              #
-#    Updated: 2025/04/15 12:14:29 by xmatute-         ###   ########.fr        #
+#    Updated: 2025/04/18 12:45:54 by xmatute-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,4 +92,7 @@ connect :
 untrust :
 	bash $(UTILS_DIR)/untrust.sh
 
-.PHONY : all clean fclean re down up reload connect hard_re untrust
+restore_database :
+	bash $(UTILS_DIR)/restore_database.sh
+
+.PHONY : all clean fclean re down up reload connect hard_re untrust restore_database
