@@ -82,6 +82,10 @@ This repository contains various exercises and scripts developed during the pisc
 
 Participating in the **piscine_data** has been an incredible honor. Being part of the first-ever intercampus collaborative correction system was a unique and inspiring experience. While personal circumstances prevented me from dedicating as much time as I would have liked, I am committed to completing this project during the next edition. This piscine has not only expanded my technical skills but also deepened my appreciation for collaborative learning and innovation.
 
+## Disclaimer
+
+**Important**: The `.env` file containing sensitive information, such as database credentials, has been included in this repository for educational purposes only. In a real-world or production project, **it is critical to never upload `.env` files or any sensitive credentials to a public repository**. Instead, use secure methods like environment variables or secret management tools.
+
 ## How to Run
 
 1. Clone the repository.
